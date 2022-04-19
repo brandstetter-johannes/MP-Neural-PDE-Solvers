@@ -8,3 +8,4 @@ conda install pytorch=1.9 torchvision torchaudio cudatoolkit=11.1 -c pytorch -c 
 conda install gcc_linux-64 -y
 conda install pytorch-geometric -c rusty1s -c conda-forge -y
 conda install -c anaconda h5py -y
+pip install -e .

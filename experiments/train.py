@@ -168,6 +168,7 @@ def main(args: argparse):
     pde.tmin = train_dataset.tmin
     pde.tmax = train_dataset.tmax
     pde.grid_size = base_resolution
+    pde.dt = train_dataset.dt
 
     dateTimeObj = datetime.now()
     timestring = f'{dateTimeObj.date().month}{dateTimeObj.date().day}{dateTimeObj.time().hour}{dateTimeObj.time().minute}'

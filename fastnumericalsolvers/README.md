@@ -1,0 +1,1 @@
+These python scripts implement fast numerical solvers for E1, E2, and WE1. The runtime numbers are orders of magnitudes faster, demonstrating the efficiency and reliability of current numerical solvers.

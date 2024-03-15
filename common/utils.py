@@ -84,7 +84,7 @@ class HDF5Dataset(Dataset):
             right = u_super[..., 1:3]
             u_super_padded = torch.tensor(np.concatenate((left, u_super, right), -1))
             weights = torch.tensor([[[[0.2]*5]]])
-            u_super = F.conv1d(u_super_padded, weights, stride=(1, self.ratio_nx)).squeeze().numpy()
+            u_super = F.conv2d(u_super_padded, weights, stride=(1, self.ratio_nx)).squeeze().numpy()
             x = self.x
 
             # Base resolution trajectories (numerical baseline) and equation specific parameters
@@ -101,11 +101,11 @@ class HDF5Dataset(Dataset):
             # No padding is possible due to non-periodic boundary conditions
             weights = torch.tensor([[[[1./self.ratio_nx]*self.ratio_nx]]])
             u_super = self.data[self.dataset_super][idx][::self.ratio_nt][None, None, ...]
-            u_super = F.conv1d(torch.tensor(u_super), weights, stride=(1, self.ratio_nx)).squeeze().numpy()
+            u_super = F.conv2d(torch.tensor(u_super), weights, stride=(1, self.ratio_nx)).squeeze().numpy()
 
             # To match the downprojected trajectories, also coordinates need to be downprojected
             x_super = torch.tensor(self.data[self.dataset_super].attrs['x'][None, None, None, :])
-            x = F.conv1d(x_super, weights, stride=(1, self.ratio_nx)).squeeze().numpy()
+            x = F.conv2d(x_super, weights, stride=(1, self.ratio_nx)).squeeze().numpy()
 
             # Base resolution trajectories (numerical baseline) and equation specific parameters
             u_base = self.data[self.dataset_base][idx]

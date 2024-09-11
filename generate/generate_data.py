@@ -194,7 +194,7 @@ def generate_data_wave_equation(experiment: str,
             bc_right = 1
         elif boundary_condition == "mixed":
             bc_left = np.random.randint(0, 2, size=1)
-            bc_left = np.random.randint(0, 2, size=1)
+            bc_right = np.random.randint(0, 2, size=1)
         else:
             raise Exception("Wrong boundary conditions")
 
